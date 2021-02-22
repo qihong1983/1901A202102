@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
+    <title>苏宁</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/index.css">
+    
+    <script>
+        (function(doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window); 
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部背景 begin-->
+        <div class="topBgColor">
+
+        </div>
+        <!-- 顶部背景 end-->
+
+        <!-- 导航 begin-->
+        <div class="navBar">
+            <div class="navBar-item">
+                <a href="">
+                    <img src="imgs/navLeftIcon.png"/>
+                </a>
+            </div>
+            <div class="navBar-item abs">
+                <a href="">
+                    <img src="imgs/abs.gif"/>
+                </a>
+            </div>
+            <div class="navBar-item">
+                <a href="">
+                    <img src="imgs/navRightIcon.png"/>
+                </a>
+            </div>
+        </div>
+        <!-- 导航 end-->
+    </div>
+</body>
+</html>
