@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
+    <title>苏宁</title>
+    <link rel="stylesheet" href="css/normalize.css">
+
+    
+    <script>
+        (function(doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window); 
+    </script>
+    <style>
+        .demo1  {
+            background: red;
+            display: flex;
+            flex-direction: row;
+            
+        }
+
+        .demo1 div{
+            
+        }
+
+        .demo2  {
+            background:bisque;
+            display: flex;
+            flex-direction: column;   
+        }
+
+        .demo2 div{
+
+        }
+
+
+        .demo3  {
+            background:blanchedalmond;
+            display: flex;
+            flex-direction: row-reverse;   
+        }
+
+        .demo3 div{
+
+        }
+
+
+        .demo4  {
+            background:blue;
+            display: flex;
+            flex-direction: column-reverse;   
+        }
+
+        .demo3 div{
+
+        }
+
+
+
+
+        .demo5  {
+            /* background:blue; */
+            display: flex;
+            justify-content: flex-start;
+            width:7.5rem;
+            height:2rem;
+        }
+
+        .demo5 div{
+            width:2rem;
+            height:2rem;
+            
+        }
+
+
+
+        .demo6  {
+            /* background:blue; */
+            display: flex;
+            justify-content: flex-end;
+            width:7.5rem;
+            height:2rem;
+        }
+
+        .demo6 div{
+            width:2rem;
+            height:1rem;
+            
+        }
+
+
+        .demo7  {
+            /* background:blue; */
+            display: flex;
+            justify-content: center;
+            width:7.5rem;
+            height:2rem;
+        }
+
+        .demo7 div{
+            width:2rem;
+            height:1rem;
+            
+        }
+
+
+        .demo8  {
+            /* background:blue; */
+            display: flex;
+            justify-content: space-between;
+            width:7.5rem;
+            height:2rem;
+        }
+
+        .demo8 div{
+            width:2rem;
+            height:1rem;
+        }
+
+
+        .demo9  {
+            /* background:blue; */
+            display: flex;
+            justify-content: space-around;
+            width:7.5rem;
+            height:2rem;
+        }
+
+        .demo9 .item1{
+            width:2rem;
+            height:1rem;
+            font-size:0.1rem;
+            background: chocolate;
+            text-align: center;
+        }
+
+        .demo9 .item2{
+            width:2rem;
+            height:1rem;
+            font-size:0.1rem;
+            background: crimson;
+        }
+
+        .demo9 .item3{
+            width:2rem;
+            height:1rem;
+            font-size:0.1rem;
+            background:cyan;
+        }
+
+
+        /* space-around */
+        .demo10 {
+            display: flex;
+            justify-content: flex-end;
+            width:7.5rem;
+            height:2rem;
+
+
+        }
+
+        .demo10 div {
+            width:2rem;
+            height:1rem;
+            font-size:0.1rem;
+            background: crimson;
+        }
+
+        .demo10 .self {
+            align-self:flex-end;
+        }
+        
+    </style>
+</head>
+<body>
+<div class="demo1">
+    <div>
+        item 1
+    </div>
+    <div>
+        item 2
+    </div>
+    <div>
+        item 3
+    </div>
+</div>
+
+
+
+<div class="demo2">
+    <div>
+        item 1
+    </div>
+    <div>
+        item 2
+    </div>
+    <div>
+        item 3
+    </div>
+
+</div>
+
+
+
+<div class="demo3">
+    <div>
+        item 1
+    </div>
+    <div>
+        item 2
+    </div>
+    <div>
+        item 3
+    </div>
+
+</div>
+
+
+
+<div class="demo4">
+    <div>
+        item 1
+    </div>
+    <div>
+        item 2
+    </div>
+    <div>
+        item 3
+    </div>
+
+</div>
+
+
+
+<div class="demo5">
+    <div>
+        item 1
+    </div>
+    <div>
+        item 2
+    </div>
+    <div>
+        item 3
+    </div>
+
+</div>
+
+
+
+<div class="demo6">
+    <div>
+        item 1
+    </div>
+    <div>
+        item 2
+    </div>
+    <div>
+        item 3
+    </div>
+
+</div>
+
+
+
+<!-- justify-content center -->
+<div class="demo7">
+    <div>
+        item 1
+    </div>
+    <div>
+        item 2
+    </div>
+    <div>
+        item 3
+    </div>
+
+</div>
+
+
+<!--  justify-content:space-between -->
+<div class="demo8">
+    <div>
+        item 1
+    </div>
+    <div>
+        item 2
+    </div>
+    <div>
+        item 3
+    </div>
+
+</div>
+
+
+<!--  justify-content:space-around -->
+<div class="demo9">
+    <div class="item1">
+        item 1
+    </div>
+    <div class="item2">
+        item 2
+    </div>
+    <div class="item3">
+        item 3
+    </div>
+</div>
+
+
+
+<div class="demo10">
+    <div class="item1">
+        item 1
+    </div>
+    <div class="item2 self">
+        item 2
+    </div>
+    <div class="item3">
+        item 3
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>
