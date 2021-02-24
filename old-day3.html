@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
+    <title>苏宁</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/minirefresh.min.css" />
+
+    <link rel="stylesheet" href="css/index.css">
+    
+    <script>
+        (function(doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window); 
+    </script>
+</head>
+<body>
+    <div id="minirefresh" class="minirefresh-wrap">
+        <div class="minirefresh-scroll">
+    <div class="container">
+        <!-- 顶部背景 begin-->
+        <div class="topBgColor">
+
+        </div>
+        <!-- 顶部背景 end-->
+
+        <!-- 导航 begin-->
+        <div class="navBar">
+            <div class="navBar-item">
+                <a href="">
+                    <img src="imgs/navLeftIcon.png"/>
+                </a>
+            </div>
+            <div class="navBar-item abs">
+                <a href="">
+                    <img src="imgs/abs.gif"/>
+                </a>
+            </div>
+            <div class="navBar-item">
+                <a href="">
+                    <img src="imgs/navRightIcon.png"/>
+                </a>
+            </div>
+        </div>
+        <!-- 导航 end-->
+
+
+        <!-- 猜你喜欢 begin -->
+        <div class="youLike">
+            <div class="youLike-hd">
+                <img src="/imgs/like.png">
+            </div>
+            <div class="youLike-bd" id="likeList">
+                <div class="youLike-bd-item">
+                    <div class="youLike-bd-item-hd">
+                        <img src="imgs/upload1.png" />
+                    </div>
+
+                    <div class="youLike-bd-item-bd">
+                        <h3>固仑格格东北酸菜500g 大白菜泡菜酱菜 火锅涮品下饭菜 酸菜饺子馅原料 酸菜炖肉</h3>
+                    </div>
+                    
+                    <div class="youLike-bd-item-ft">
+                        ￥2.8
+                    </div>
+                </div>
+
+
+
+                <div class="youLike-bd-item">
+                    <div class="youLike-bd-item-hd">
+                        <img src="imgs/upload2.png" />
+                    </div>
+
+                    <div class="youLike-bd-item-bd">
+                        <h3>固仑格格东北酸菜500g 大白菜泡菜酱菜 火锅涮品下饭菜 酸菜饺子馅原料 酸菜炖肉</h3>
+                    </div>
+                    
+                    <div class="youLike-bd-item-ft">
+                        ￥2.8
+                    </div>
+                </div>
+
+
+                <div class="youLike-bd-item">
+                    <div class="youLike-bd-item-hd">
+                        <img src="imgs/upload1.png" />
+                    </div>
+
+                    <div class="youLike-bd-item-bd">
+                        <h3>固仑格格东北酸菜500g 大白菜泡菜酱菜 火锅涮品下饭菜 酸菜饺子馅原料 酸菜炖肉</h3>
+                    </div>
+                    
+                    <div class="youLike-bd-item-ft">
+                        ￥2.8
+                    </div>
+                </div>
+
+
+
+                <div class="youLike-bd-item">
+                    <div class="youLike-bd-item-hd">
+                        <img src="imgs/upload1.png" />
+                    </div>
+
+                    <div class="youLike-bd-item-bd">
+                        <h3>固仑格格东北酸菜500g 大白菜泡菜酱菜 火锅涮品下饭菜 酸菜饺子馅原料 酸菜炖肉</h3>
+                    </div>
+                    
+                    <div class="youLike-bd-item-ft">
+                        ￥2.8
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 猜你喜欢 end -->
+
+
+
+    </div>
+
+
+    
+        </div>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="js/minirefresh.min.js"></script>
+    <script>
+        var page= 0;
+        var miniRefresh = new MiniRefresh({
+            container: '#minirefresh',
+            down: {
+                isLock:true,
+                callback: function() {
+                    // 下拉事件
+                    console.log(1);
+                    miniRefresh.endDownLoading();
+                }
+            },
+            up: {
+                isAuto: true,
+                callback: function() {
+                    // 上拉事件
+                    getData();
+                    // 注意，由于默认情况是开启满屏自动加载的，所以请求失败时，请务必endUpLoading(true)，防止无限请求
+                    
+                }
+            }
+        });
+
+        function getData () {
+
+            page++;
+            $.ajax({
+                url: 'listdata.json',// 请求网址
+                type: 'GET',
+                data: {// 请求参数，一般会带上页码
+                    'page': page,
+                    't': new Date().getTime()// 防止GET请求缓存
+                },
+                success: function (res) {
+                    // 下面这段请根据自己的数据结构来处理
+                   console.log(res, 'resresres');
+                //    miniRefresh.endUpLoading(true);
+                    
+                },
+                error: function (e) {
+                    
+                    console.log(e, 11111);
+                    // if (downOrUp == 'down') {
+                    //     $('#listdata').html('');
+                    //     miniRefresh.endDownLoading(true);
+                    // } else {
+                    //     miniRefresh.endUpLoading(true);
+                    // }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

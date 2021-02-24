@@ -1,10 +1,14 @@
 a {
     font-size:0.14rem;
 }
+body {
+    background: #F7F7F7;
+    font-family: Helvetica,STHeiTi,sans-serif;
+}
 .container {
     width:7.5rem;
-    height:100vh;
-    background:#FFDB47;
+    /* height:100vh; */
+
 }
 
 /* <div class="navBar">
@@ -34,9 +38,10 @@ a {
     display: flex;
     /* justify-content: space-around; */
     justify-content:space-between;
-    margin-left:0.34rem;
-    margin-right:0.34rem;
+    padding-left:0.34rem;
+    padding-right:0.34rem;
 
+    background:#FFDB47;
 }
 
 .navBar-item {
@@ -65,5 +70,101 @@ a {
 }
 
 
+/* 列表 */
+/* 
+        <div class="youLike">
+            <div class="youLike-hd">
+                <img src="/imgs/like.png">
+            </div>
+            <div class="youLike-bd" id="likeList">
+                <div class="youLike-bd-item">
+                    <div class="youLike-bd-item-hd">
+                        <img src="imgs/upload1.png" />
+                    </div>
+
+                    <div class="youLike-bd-item-bd">
+                        <h3>固仑格格东北酸菜500g 大白菜泡菜酱菜 火锅涮品下饭菜 酸菜饺子馅原料 酸菜炖肉</h3>
+                    </div>
+                    
+                    <div class="youLike-bd-item-ft">
+                        ￥2.8
+                    </div>
+                </div>
+            </div>
+        </div>
+*/
+
+.youLike {
+    width:7.5rem;
 
 
+}
+
+.youLike-hd {
+    text-align: center;
+}
+.youLike-hd img {
+    width:7.02rem;
+    height:0.6rem;
+}
+
+
+.youLike-bd {
+    /* width:7.5rem; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    padding-left:0.12rem;
+    padding-right:0.12rem;
+}
+.youLike-bd-item {
+    width:3.42rem;
+    height:auto;
+    background:white;
+    margin-bottom:0.18rem;
+    border-radius: 0.12rem;
+    overflow: hidden;
+}
+
+.youLike-bd-item-hd {
+    width:3.42rem;
+    height:3.42rem;
+}
+
+
+.youLike-bd-item-hd img {
+    width:3.42rem;
+    height:3.42rem;
+}
+
+
+
+
+
+.youLike-bd-item-bd {
+    
+}
+
+.youLike-bd-item-bd h3{
+    font-size:0.13rem;
+    font-weight: initial;
+    color:#333;
+}
+
+.youLike-bd-item-ft {
+    color:#FF4422;
+    font-size:0.13rem;
+    padding-bottom:0.12rem;
+}
+
+
+.minirefresh-scroll {
+    background:#F7F7F7;
+}
+
+.minirefresh-wrap {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* #FF4422; */
