@@ -168,3 +168,110 @@ body {
 }
 
 /* #FF4422; */
+
+
+.sliderOne {
+    display: flex;
+    width:7.5rem;
+    height:2.80rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.sliderOne-wrap {
+    display: flex;
+    position: relative;
+}
+
+.sliderOne-wrap-item {
+    /* width:7rem; */
+    width:7.5rem;
+    height:2.8rem;
+    /* padding-left: 0.25rem;
+    padding-right: 0.25rem; */
+    border-radius: 0.175rem;
+}
+
+.sliderOne-wrap-item a {
+    width:7rem;
+    height:2.8rem;
+    display: block;
+    border-radius: 0.175rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    overflow: hidden;
+}
+
+.sliderOne-wrap-item a img {
+    width:7rem;
+    height:2.8rem;
+    
+    border-radius: 0.175rem;
+    overflow: hidden;
+}
+
+.sliderOne-actions {
+    width:7.5rem;
+    height:0.125rem;
+
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    bottom:0.20rem;
+}
+
+.sliderOne-actions .item {
+    height: 0.1rem;
+    width: 0.1rem;
+    border-radius: 50%;
+    background:hsla(0,0%,100%,.6);
+    list-style: none;
+    box-sizing: border-box;
+    margin:0 0.04rem;
+    
+}
+
+.sliderOne-actions .item.active {
+    background:red;
+}
+
+.swiper-pagination-bullet {
+    height: 0.1rem;
+    width: 0.1rem;
+    background: white;
+    opacity: 1;
+}
+
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: var(--swiper-pagination-color, var(--swiper-theme-color));
+  }
+:root {
+    --swiper-theme-color: red;
+  }
+
+/* 轮播列表 */
+.sliderList {
+    /* background: url(../imgs/index-slider2-bg.webp) no-repeat center center;
+    width: 7.5rem;
+    height: 3.24rem;
+    background-size: 7.5rem 3.24rem;
+    margin-top: 0.06rem; */
+
+    width: 7.5rem;
+    height: 3.24rem;
+    background-size: 7.5rem 3.24rem;
+    margin-top: 0.06rem;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+/* 第一个轮播图 end*/
