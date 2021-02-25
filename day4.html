@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/minirefresh.min.css" />
 
+    <link rel="stylesheet" href="css/swiper.css">
+    
     <link rel="stylesheet" href="css/index.css">
     
     <script>
@@ -55,21 +57,21 @@
         <!-- 导航 end-->
 
         <!-- 轮播图 begin -->
-        <div class="sliderOne">
+        <div class="sliderOne  swiper-container">
             <div class="sliderOne-wrap swiper-wrapper">
-                <div class="sliderOne-wrap-item ">
+                <div class="sliderOne-wrap-item swiper-slide">
                     <a href="javascript:void(0)">
-                        <img src="imgs/index-upload1.jpg" alt="##">
+                        <img src="imgs/lunbo1.png" alt="##">
                     </a>
                 </div>
-                <div class="sliderOne-wrap-item">
+                <div class="sliderOne-wrap-item swiper-slide">
                     <a href="javascript:void(0)">
-                        <img src="imgs/index-upload2.jpg" alt="##">
+                        <img src="imgs/lunbo2.jpg" alt="##">
                     </a>
                 </div>
-                <div class="sliderOne-wrap-item">
+                <div class="sliderOne-wrap-item swiper-slide">
                     <a href="javascript:void(0)">
-                        <img src="imgs/index-upload3.jpg" alt="##">
+                        <img src="imgs/lunbo3.png" alt="##">
                     </a>
                 </div>
             </div>
@@ -162,6 +164,8 @@
     </div>
     <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
     <script type="text/javascript" src="js/minirefresh.min.js"></script>
+    <script type="text/javascript" src="js/swiper.min.js"></script>
+
     <script>
 
         var page = 0;
@@ -264,6 +268,23 @@
                 }
             });
         }
+
+
+
+
+        new Swiper('.swiper-container', {
+            // direction: 'vertical', // 垂直切换选项
+            loop: true, // 循环模式选项
+            // autoplay: {
+            //     disableOnInteraction: false,  //触碰后自动轮播也不会停止
+            //     delay: 2500,
+            // },
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+        })
     </script>
 </body>
 </html>

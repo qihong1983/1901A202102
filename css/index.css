@@ -171,6 +171,7 @@ body {
 
 
 .sliderOne {
+    top:0.12rem;
     display: flex;
     width:7.5rem;
     height:2.80rem;
@@ -246,7 +247,12 @@ body {
 
 .swiper-pagination-bullet-active {
     opacity: 1;
-    background: var(--swiper-pagination-color, var(--swiper-theme-color));
+    /* background: var(--swiper-pagination-color, var(--swiper-theme-color)); */
+    /* background:green; */
+
+    background: white;
+    width: 0.3rem;
+    border-radius: 0.3rem;
   }
 :root {
     --swiper-theme-color: red;
