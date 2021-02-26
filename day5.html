@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about应用场景演示</title>
+    
+     <!-- Theme CSS -->
+  <link rel="stylesheet" type="text/css" href="assets/skin/default_skin/css/theme.css">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <!-- <input type="text" id="ipt"/> -->
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-2 control-label" for="inputSmall">搜索想要的内容</label>
+          <div class="col-lg-5">
+
+              <input id="ipt" class="form-control" type="text" placeholder="输入想输入的内容">
+
+          </div>
+        </div>
+
+
+      </form>
+      <ul class="list-unstyled" id="list">
+        <!-- <li>...</li> -->
+      </ul>
+    <script src="/js/jquery-1.11.1.js"></script>
+
+
+    <script src="vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
+
+    <!-- Theme Javascript -->
+    <script src="assets/js/utility/utility.js"></script>
+    <script src="assets/js/demo/demo.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
+
+    <script>
+        var ajaxHandle = null;
+
+        function ajax() {
+            if (ajaxHandle) {
+                ajaxHandle.abort();
+            }
+            $('#list').html('');
+            ajaxHandle = $.ajax({
+                type:"get",
+                url: "http://youyong.ba:8080/mock/5fed6c290d6d9c4f58824008/title",
+                dataType: "json",
+                success:function (res){
+                    console.log(res,1111);
+                    var html = '';
+                    res.data.map((item)=> {
+                        $('#list').append(`<li>${item.title}</li>`);
+                    });
+                },
+                fail:function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+
+        $("#ipt").on("keyup", function (e) {
+            console.log(22222);
+            ajax();
+        })
+    </script>
+</body>
+</html>
