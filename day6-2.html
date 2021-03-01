@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="ipt"  />
+    <script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+    <script>
+        const inputObj = document.getElementById('#input');
+        
+        // inputObj.addEventListener("keyup", function (e) {
+        //     //这里执行防抖函数
+        //     // debounceInput(e.target.value);
+        //     console.log(11);
+        // });
+        let page = 0;
+        function input(value) {
+            page++;
+            // console.log(value, '防抖');
+            $.ajax({
+                url: 'listdata.json',// 请求网址
+                type: 'GET',
+                data: {// 请求参数，一般会带上页码
+                    'page': page,
+                    'value':value,
+                    't': new Date().getTime()// 防止GET请求缓存
+                },
+                success: function (res) {
+                    
+                }
+            });
+        }
+
+
+        function throttling(fun, delay) {
+            let last,timer;
+
+            return function (args) {
+                var that = this;
+
+                var now = +new Date();
+
+
+                if (last && now < last + delay) {
+                    clearTimeout(timer);
+                    timer = setTimeout(function () {
+                        fun.call(that, args);
+                    }, delay)
+
+                } else {
+                    last = now;
+                    fun.call(that, args);
+                }
+                
+            }
+        }
+
+        const throttlingInput = throttling(input, 500);
+        $('#ipt').off("keyup").on("keyup", function (e) {
+            throttlingInput(e.target.value);
+            // input(e.target.value);
+        })
+    </script>
+</body>
+</html>
