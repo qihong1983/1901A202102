@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch abort</title>
+</head>
+<body>
+    <input type="text" id="ipt" />
+    <script>
+        let iptDom = document.getElementById("ipt");
+        
+        let k = 0;
+        let controllers = [];
+
+
+        controllers[k] = new AbortController();
+        let signal = controllers[k].signal;
+
+        
+        function cancelPromise(promise, abortHandle) {
+            Promise.race([
+                promise,
+                new Promise((_,reject) => {
+                    abortHandle.cancel = function cannel(text) {
+                        controllers[k].abort();
+                        console.log(text);
+                        reject(text)
+                    }
+                })
+            ]).then(resp => {
+                console.log(resp, 'resresres');
+                return resp.json()
+            }).then(res=>{
+                console.log(res, 'resresres')
+            }).catch((e) => {
+                console.log(e,'eeeee');
+            });
+        }
+        
+        const abortFunc = {
+            cancel: function () {
+
+            }
+        }
+
+        function ajaxHanlde(url) {
+            abortFunc.cancel('关掉上一个请求');
+            // delete controllers[k];
+            k++;
+            controllers[k] = new AbortController();
+            signal = controllers[k].signal;
+            
+            cancelPromise(fetch(url, {
+                signal: signal
+            }), abortFunc)
+            
+        }
+
+        
+        iptDom.addEventListener("keyup", (e)=> {
+            ajaxHanlde("http://youyong.ba:8080/mock/5fed6c290d6d9c4f58824008/title");
+        });
+
+    </script>
+</body>
+</html>
