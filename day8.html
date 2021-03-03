@@ -8,26 +8,65 @@
 </head>
 <body>
     
-    <input type="text" />
+    <input type="text" id="ipt" />
     <script src="./js/jquery-1.11.1.js"></script>
     <script>
 
-        $.ajax({
-                type:"get",
-                url: "http://youyong.ba:8080/mock/5fed6c290d6d9c4f58824008/title",
-                dataType: "json",
-                timeout: 1000,
-                success:function (res){
-                    console.log(res,1111);
-                    // var html = '';
-                    // res.data.map((item)=> {
-                    //     $('#list').append(`<li>${item.title}</li>`);
-                    // });
-                },
-                fail:function (err) {
-                    console.log(err);
-                }
-            });
+        //ajax timeout 
+        //fetch timeout 
+        var iptDom = document.getElementById("ipt");
+
+
+        function timeoutFunc() {
+            let controller = new AbortController();
+            let signal = controller.signal;
+
+            //超时处理方法
+            let timeoutPromise = (timeout) => {
+                return new Promise((resolve, reject)=> {
+                    setTimeout(()=> {
+                        resolve(new Response("timeout", { status: 504, statusText: "timeout " }));
+                        controller.abort();
+                    }, timeout)
+                })
+            }
+
+            //拉数据的请求方法
+            let requestPromise = (url) => {
+                return fetch(url, {
+                    signal: signal
+                })
+            }  
+            
+            Promise.race([timeoutPromise(2000), requestPromise("http://youyong.ba:8080/mock/5fed6c290d6d9c4f58824008/title")])
+
+
+        }
+
+        iptDom.addEventListener("keyup", (e)=> {
+
+            //fetch timeout
+            timeoutFunc();
+            
+            // ajax timeout 
+            // $.ajax({
+            //     type:"get",
+            //     url: "http://youyong.ba:8080/mock/5fed6c290d6d9c4f58824008/title",
+            //     dataType: "json",
+            //     timeout: 1000,
+            //     success:function (res){
+            //         console.log(res,1111);
+            //         // var html = '';
+            //         // res.data.map((item)=> {
+            //         //     $('#list').append(`<li>${item.title}</li>`);
+            //         // });
+            //     },
+            //     fail:function (err) {
+            //         console.log(err);
+            //     }
+            // });
+        
+        });
         
     </script>
 </body>
