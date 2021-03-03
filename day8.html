@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax 和 fetch timeout</title>
+</head>
+<body>
+    
+    <input type="text" />
+    <script src="./js/jquery-1.11.1.js"></script>
+    <script>
+
+        $.ajax({
+                type:"get",
+                url: "http://youyong.ba:8080/mock/5fed6c290d6d9c4f58824008/title",
+                dataType: "json",
+                timeout: 1000,
+                success:function (res){
+                    console.log(res,1111);
+                    // var html = '';
+                    // res.data.map((item)=> {
+                    //     $('#list').append(`<li>${item.title}</li>`);
+                    // });
+                },
+                fail:function (err) {
+                    console.log(err);
+                }
+            });
+        
+    </script>
+</body>
+</html>
