@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="ipt" />
+    <button id="btn">防重点击</button>
+
+    <script>
+        var ipt = document.getElementById('ipt');
+        var btn = document.getElementById('btn');
+
+
+        var timer = null;
+        var status = "true";
+        btn.addEventListener("click", function (e) {
+            // console.log(ipt);
+
+            // console.log(status, 'status');
+
+            // console.log(typeof status, 'typeof status');
+
+
+            if (status == "true") {
+
+                status = "false";
+                console.log(ipt.value, '<----ipt.value');
+                setTimeout(()=> {
+                    status = true;
+                   
+                },1000)
+                
+                
+            } else {
+                return ;
+            }
+            
+
+            
+
+            
+        });
+    </script>
+</body>
+</html>
