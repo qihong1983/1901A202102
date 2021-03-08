@@ -1,35 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>拼音后台</title>
 </head>
+
 <body>
-    
+
     <form id="form">
         <h2>插入信息拼音demo</h2>
-        <input type="text" name="title"/>
+        <input type="text" id="title" name="title" />
         <br />
         <br />
         <br />
-        
-        <textarea
-            name="content"
-        >
-        
+
+        <textarea id="content" name="content">
+
         </textarea>
         <br />
 
-        <input type="submit" value="提交" />
-     </form>
+        <input type="button" value="提交" id="submit" />
+    </form>
 
-     <script>
-         var formDom =  document.getElementById("form");
-         
+    <script src="js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="js/pinyin_dict_notone.js"></script>
+    <script type="text/javascript" src="js/pinyin_dict_withtone.js"></script>
+    <script type="text/javascript" src="js/pinyinUtil.js"></script>
 
-         formDom.submit();
-     </script>
+    <script>
+
+        String.prototype.trim = function () {
+            return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+        }
+
+
+        var formDom = document.getElementById("form");
+        var submit = document.getElementById("submit");
+
+        var title = document.getElementById("title");
+        var content = document.getElementById("content");
+
+
+
+
+
+        submit.addEventListener("click", () => {
+
+            console.log(title.value.trim(), "title.value.trim()")
+
+            title.value = title.value.trim();
+            content.value = title.value.trim();
+
+            console.log(title.value);
+            console.log(content.value);
+
+
+
+
+            var lang = 'en';
+            if (/[^\x00-\xff]/g.test(title.value))
+                lang = 'cn';
+            else
+                lang = 'en';
+
+
+
+            if (lang == 'cn') {
+                var pinyin = pinyinUtil.getPinyin(title.value, ' ', false, false).replace(' ', '');
+            } else {
+                var pinyin = title.value;
+            }
+
+
+            //ajax
+            // $.ajax()
+
+
+            console.log($(formDom), 'jq');
+        })
+
+
+
+
+
+
+
+    </script>
 </body>
+
 </html>

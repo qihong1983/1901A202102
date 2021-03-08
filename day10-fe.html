@@ -8,13 +8,55 @@
 </head>
 <body>
     
+
+    <input type="text" id="ipt" />
+
+
+    <script src="js/jquery-1.11.1.js"></script>
     <script type="text/javascript" src="js/pinyin_dict_notone.js"></script>
 	<script type="text/javascript" src="js/pinyin_dict_withtone.js"></script>
     <script type="text/javascript" src="js/pinyinUtil.js"></script>
 
     <script>
-        // console.log(pinyinUtil.getPinyin('小茗同学',false));
         console.log(pinyinUtil.getPinyin("小茗同学",' ', false, false));
+
+        var ipt= document.getElementById("ipt");
+
+        ipt.addEventListener("keyup", (e)=> {
+            
+            var lang = "en";
+            if (/[^\x00-\xff]/g.test(e.target.value))
+                lang = 'cn';
+            else
+                lang = 'en';
+
+            console.log(e.target.value);
+            console.log(lang);
+            //ajax 
+            $.ajax({
+                type:"get",
+                url: "http://youyong.ba:8080/mock/5fed6c290d6d9c4f58824008/title",
+                dataType: "json",
+                data: {
+                    lang: lang,
+                    searchName: e.target.value
+                },
+                success:function (res){
+                    console.log(res,1111);
+                    var html = '';
+                    res.data.map((item)=> {
+                        $('#list').append(`<li>${item.title}</li>`);
+                    });
+                },
+                fail:function (err) {
+                    console.log(err);
+                }
+            });
+            
+            
+
+            
+        });
     </script>
 </body>
 </html>
