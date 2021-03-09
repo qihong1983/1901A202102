@@ -47,7 +47,7 @@
 
 
 
-        submit.addEventListener("click", () => {
+        submit.addEventListener("click", (e) => {
 
             console.log(title.value.trim(), "title.value.trim()")
 
@@ -75,8 +75,29 @@
             }
 
 
-            //ajax
-            // $.ajax()
+      
+            $.ajax({
+                type:"get",
+                url: "http://localhost:8009/addinfo",
+                dataType: "json",
+                data: {
+                    title: title.value,
+                    content: content.value,
+                    pinyin: pinyin
+                },
+                success:function (res){
+                    console.log(res,'返回成功');
+
+
+                    // var html = '';
+                    // res.data.map((item)=> {
+                    //     $('#list').append(`<li>${item.title}</li>`);
+                    // });
+                },
+                fail:function (err) {
+                    console.log(err);
+                }
+            });
 
 
             console.log($(formDom), 'jq');
