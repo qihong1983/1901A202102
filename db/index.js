@@ -37,4 +37,33 @@ dbObj.insertData = (title, content, pinyin) => {
     })
 }
 
+
+// getData
+dbObj.getData = (lang, searchname) => {
+    return new Promise((resolve,reject) => {
+        pool.getConnection((err, conn) => {
+
+            var sql = '';
+            if (lang == 'cn') {
+                sql = `select * from pinyin where title like '%${searchname}%'`;
+            } else {
+                sql = `select * from pinyin where py like '%${searchname}%'`
+            }
+
+            console.log(sql, '<----sql');
+
+
+            pool.query(sql, (err, results) => {
+                pool.releaseConnection(conn);
+
+                if (err) {
+                    reject(err);
+                }
+
+                return resolve(results);
+            });
+        })
+    })
+}
+
 module.exports = dbObj;

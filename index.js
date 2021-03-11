@@ -31,18 +31,9 @@ app.get('/addinfo',  async (req,res) => {
 // pinyin: xiaohong
     const {title, content, pinyin} = req.query;
 
-    // console.log(title, 'title');
-    // console.log(content, 'content');
-    // console.log(pinyin, 'pingyin');
-
     let results =  await db.insertData(title, content, pinyin);
 
-    // let jsonData = {
-    //     status: true,
-    //     data:results 
-    // }
-    // res.json(jsonData);
-
+    console.log(results, '<----results');
 
 
     res.json({status: true, msg: "success"});
@@ -51,7 +42,33 @@ app.get('/addinfo',  async (req,res) => {
 
 
 app.get('/searchname',  async (req,res) => {
-    res.json({status: true, msg: "success"});
+
+
+    // lang: lang,
+    // searchName: e.target.value
+
+
+    let {lang, searchName} = req.query;
+
+    let results =  await db.getData(lang, searchName);
+
+    console.log(results, '<-----results');
+    
+// {
+//     status: true,
+//     msg:"success",
+//     data: [{
+        
+//     }]
+// }
+
+    res.json({
+        status: true, 
+        msg: "success",
+        data: results
+    });
+
+    
 })
 
 app.listen(8009, ()=> {

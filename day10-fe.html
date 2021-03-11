@@ -11,6 +11,9 @@
 
     <input type="text" id="ipt" />
 
+    <ul id="list">
+
+    </ul>
 
     <script src="js/jquery-1.11.1.js"></script>
     <script type="text/javascript" src="js/pinyin_dict_notone.js"></script>
@@ -21,7 +24,9 @@
         console.log(pinyinUtil.getPinyin("小茗同学",' ', false, false));
 
         var ipt= document.getElementById("ipt");
+        var list = document.getElementById("list");
 
+        var html = '';
         ipt.addEventListener("keyup", (e)=> {
             
             var lang = "en";
@@ -31,11 +36,13 @@
                 lang = 'en';
 
             console.log(e.target.value);
+            // console.log('小洪aa');
             console.log(lang);
             //ajax 
+            
             $.ajax({
                 type:"get",
-                url: "http://youyong.ba:8080/mock/5fed6c290d6d9c4f58824008/title",
+                url: "http://localhost:8009/searchname",
                 dataType: "json",
                 data: {
                     lang: lang,
@@ -43,10 +50,22 @@
                 },
                 success:function (res){
                     console.log(res,1111);
-                    var html = '';
-                    res.data.map((item)=> {
-                        $('#list').append(`<li>${item.title}</li>`);
-                    });
+                    
+                    html = '';
+                    $(list).html(html);
+                    const {status,data,msg} = res;
+
+                    if (status) {
+                        $.each(res.data,function (key,item) {
+                            console.log(key,item, '<---item');
+
+                            html += `<li>${item.title} -- ${item.py}</li>`
+                           
+
+                        });
+                        $(list).append(html);
+                    }
+                    
                 },
                 fail:function (err) {
                     console.log(err);
