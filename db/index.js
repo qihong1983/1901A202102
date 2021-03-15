@@ -66,4 +66,22 @@ dbObj.getData = (lang, searchname) => {
     })
 }
 
+
+dbObj.clearData = () => {
+    return new Promise((resolve,reject) => {
+        pool.getConnection((err, conn) => {
+            var sql = 'truncate table pinyin';
+            pool.query(sql, (err, results) => {
+                pool.releaseConnection(conn);
+
+                if (err) {
+                    reject(err);
+                }
+
+                return resolve(results);
+            });
+        })
+    })
+}
+
 module.exports = dbObj;

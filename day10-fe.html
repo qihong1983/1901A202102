@@ -15,6 +15,9 @@
 
     </ul>
 
+
+    <input type="button" value="清空数据库" id="clearData" />
+
     <script src="js/jquery-1.11.1.js"></script>
     <script type="text/javascript" src="js/pinyin_dict_notone.js"></script>
 	<script type="text/javascript" src="js/pinyin_dict_withtone.js"></script>
@@ -74,7 +77,30 @@
             
             
 
+
+
+
             
+        });
+
+
+        $("#clearData").off("click").on("click", (e)=> {
+
+            html = '';
+            $(list).html(html);
+
+
+            $.ajax({
+                type:"get",
+                url: "http://localhost:8009/clearData",
+                dataType: "json",
+                success:function (res){
+                    console.log(res,3333);
+                },
+                fail:function (err) {
+                    console.log(err);
+                }
+            });
         });
     </script>
 </body>

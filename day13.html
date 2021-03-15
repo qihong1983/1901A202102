@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="/js/jquery-1.11.1.js"></script>
+    <script>
+
+
+        // async await promise
+
+        function ajaxHander() {
+            return new Promise((resolve, reject)=> {
+                $.ajax({
+                    type:"get",
+                    url: "http://localhost:8009/searchname?lang=en&searchName=b",
+                    dataType: "json",
+                    success:function (res){
+                        // console.log(res,3333);
+                        resolve(res);
+                    },
+                    fail:function (err) {
+                        console.log(err);
+                    }
+                });
+            });
+        }
+
+        async function startAjax() {
+            var res = await ajaxHander();
+            console.log(res);
+        }
+
+        // startAjax();
+
+        async function startAjax2() {
+            var res = await fetch("http://localhost:8009/searchname?lang=en&searchName=b");
+            var data = await res.json();
+
+            console.log(data, '<--return data');
+        }
+
+
+        startAjax2();
+        fetch("http://localhost:8009/searchname?lang=en&searchName=b").then((res)=> {
+            console.log(res);
+            return res.json();
+        }).then((data)=> {
+            console.log(data, '<----');
+        });
+   
+        
+        // ajaxHander().then((res)=> {
+        //     console.log(res,4444);
+        // });
+    </script>
+</body>
+</html>

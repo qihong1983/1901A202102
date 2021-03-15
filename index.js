@@ -54,13 +54,7 @@ app.get('/searchname',  async (req,res) => {
 
     console.log(results, '<-----results');
     
-// {
-//     status: true,
-//     msg:"success",
-//     data: [{
-        
-//     }]
-// }
+    
 
     res.json({
         status: true, 
@@ -70,6 +64,20 @@ app.get('/searchname',  async (req,res) => {
 
     
 })
+
+app.get('/clearData',  async (req,res) => {
+
+    let results =  await db.clearData();
+
+    
+    console.log(results, "<--results clearData");
+
+
+    res.json({
+        status: true,
+        msg: "success"
+    })
+});
 
 app.listen(8009, ()=> {
     console.log('启动http服务:8009端口');
